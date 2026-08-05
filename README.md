@@ -2,6 +2,6 @@ This project focuses on designing and implementing an end-to-end Medallion Data 
 
 The project demonstrates the complete ETL process, including data extraction from *source systems*, data cleansing and standardization, dimensional *data modeling using a star schema*, and the creation of analytics-ready datasets. It also includes churn analytics to identify customer retention patterns and generate business insights that support data-driven decision-making.
 
-Technologies: Microsoft SQL Server, T-SQL, ETL, Medallion Architecture, Star Schema, Data Modeling, 
+Technologies: Microsoft SQL Server, T-SQL, ETL, Medallion Architecture, Star Schema, Data Modeling
 
 
