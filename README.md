@@ -1,4 +1,4 @@
-# Retail & E-Commerce Data Warehouse - Medallion-Data-Architecture (Bronze/Sliver/Gold) Layer
+# E-COMMERCE MEDALLION DATAWAREHOUSE ARCHITECTURE AND CHURN ANALYTICS 
 
 This project shows a comprehensive data warehousing and analytics solution and also the industry's best practices in data engineering and analytics.
 
