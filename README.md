@@ -1,10 +1,7 @@
-# E-COMMERCE MEDALLION DATA WAREHOUSE ARCHITECTURE AND CHURN ANALYTICS 
+This project focuses on designing and implementing an end-to-end Medallion Data Warehouse Architecture for an e-commerce business using Microsoft SQL Server. The solution follows the *Bronze*, *Silver*, and *Gold* layers to ingest, clean, transform, and model transactional data into a scalable analytical data warehouse.
 
-This project shows a comprehensive data warehousing and analytics solution and also the industry's best practices in data engineering and analytics.
+The project demonstrates the complete ETL process, including data extraction from *source systems*, data cleansing and standardization, dimensional *data modeling using a star schema*, and the creation of analytics-ready datasets. It also includes churn analytics to identify customer retention patterns and generate business insights that support data-driven decision-making.
 
----
-**Project Requirments**
----
-Building the Data Warehouse (Data Engineering)
+Technologies: Microsoft SQL Server, T-SQL, ETL, Medallion Architecture, Star Schema, Data Modeling, 
 
-Develop a modern data warehouse using SQL to consolidate sales data enabling analtical reportimg and informed decision making.
+
