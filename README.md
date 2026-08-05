@@ -1,4 +1,4 @@
-# E-COMMERCE MEDALLION DATAWAREHOUSE ARCHITECTURE AND CHURN ANALYTICS 
+# E-COMMERCE MEDALLION DATA WAREHOUSE ARCHITECTURE AND CHURN ANALYTICS 
 
 This project shows a comprehensive data warehousing and analytics solution and also the industry's best practices in data engineering and analytics.
 
