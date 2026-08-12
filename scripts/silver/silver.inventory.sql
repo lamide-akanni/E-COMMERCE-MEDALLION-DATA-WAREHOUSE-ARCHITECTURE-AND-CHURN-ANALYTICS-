@@ -1,7 +1,7 @@
 IF OBJECT_ID('silver.inventory', 'U') IS NOT NULL
     DROP TABLE silver.inventory;
 GO
-
+-- DDL
 CREATE TABLE silver.inventory (
     product_number  NVARCHAR(50),
     warehouse       NVARCHAR(50),
