@@ -4,7 +4,7 @@ GO
 IF OBJECT_ID('bronze.inventory', 'U') IS NOT NULL
     DROP TABLE bronze.inventory;
 GO
-== create table 
+-- ==== create table 
 CREATE TABLE bronze.inventory (
     product_number  NVARCHAR(50),
     warehouse       NVARCHAR(50),
