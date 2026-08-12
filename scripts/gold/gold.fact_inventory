@@ -1,0 +1,10 @@
+CREATE OR ALTER VIEW gold.fact_inventory AS
+SELECT
+    pr.product_key                     AS product_key,      -- FK to dim_products
+    si.date_key                        AS date_key,          -- FK to dim_date
+    si.warehouse                       AS warehouse,
+    si.stock_qty                       AS stock_quantity,
+    si.reorder_level                   AS reorder_level
+FROM silver.inventory si
+LEFT JOIN gold.dim_products pr
+    ON si.product_number = pr.product_number;
