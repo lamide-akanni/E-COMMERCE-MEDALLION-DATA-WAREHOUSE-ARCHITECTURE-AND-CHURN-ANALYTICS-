@@ -1,1 +1,13 @@
 
+  CREATE OR ALTER VIEW gold.fact_fx_rates AS
+SELECT
+    sf.date_key                        AS date_key,
+    bc.currency_key                    AS base_currency_key,
+    tc.currency_key                    AS target_currency_key,
+    sf.exchange_rate                   AS exchange_rate
+FROM silver.fx_rates sf
+LEFT JOIN gold.dim_currency bc
+    ON sf.base_currency = bc.currency_code
+LEFT JOIN gold.dim_currency tc
+    ON sf.target_currency = tc.currency_code;
+GO
