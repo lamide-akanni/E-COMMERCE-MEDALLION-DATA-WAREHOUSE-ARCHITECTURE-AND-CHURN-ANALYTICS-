@@ -1,3 +1,6 @@
+USE DataWarehouse;
+GO
+
 IF OBJECT_ID('bronze.fx_rates', 'U') IS NOT NULL
     DROP TABLE bronze.fx_rates;
 GO
@@ -9,3 +12,4 @@ CREATE TABLE bronze.fx_rates (
     exchange_rate   DECIMAL(18,6)
 );
 GO
+
