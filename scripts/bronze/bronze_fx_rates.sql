@@ -13,3 +13,6 @@ CREATE TABLE bronze.fx_rates (
 );
 GO
 
+
+-- python data ingestion
+-- python_ingestion/fetch_fx_rates.py
