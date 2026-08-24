@@ -8,6 +8,9 @@ IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'gold')
 GO
 
 -- Build the date dimension
+-- bronze is for raw source data & dim_date has no source. 
+-- it's a generated business artefact, hence Gold layer
+    
 IF OBJECT_ID('gold.dim_date', 'U') IS NOT NULL
     DROP TABLE gold.dim_date;
 GO
