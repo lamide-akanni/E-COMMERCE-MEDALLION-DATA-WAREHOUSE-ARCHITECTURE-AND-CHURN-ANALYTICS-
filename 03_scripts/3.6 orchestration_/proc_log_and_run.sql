@@ -52,3 +52,5 @@ BEGIN
         THROW 50000, @error_message, 1;
 END
 GO
+
+-- SELECT name FROM sys.procedures WHERE schema_id = SCHEMA_ID('dbo');
