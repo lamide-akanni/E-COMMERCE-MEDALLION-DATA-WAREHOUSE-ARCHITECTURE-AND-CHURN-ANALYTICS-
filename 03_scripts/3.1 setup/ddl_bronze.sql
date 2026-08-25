@@ -2,6 +2,7 @@
 
 IF OBJECT_ID('bronze.crm_cust_info', 'U') IS NOT NULL
     DROP TABLE bronze.crm_cust_info;
+GO
 
 CREATE TABLE bronze.crm_cust_info (
 cst_id                 INT, 
@@ -12,6 +13,7 @@ cst_material_status    NVARCHAR(50),
 cst_gndr               NVARCHAR(50),
 cst_create_date        DATE
 );
+GO
 
 IF OBJECT_ID('bronze.crm_prd_info', 'U') IS NOT NULL
     DROP TABLE bronze.crm_prd_info;
@@ -25,6 +27,7 @@ prd_line       NVARCHAR(50),
 prd_start_dt   DATETIME,
 prd_end_dt     DATETIME
 );
+GO
 
 
 
