@@ -1,5 +1,5 @@
 :: run_pipeline.bat 
-:: -- SQL Server Express has no SQL Server Agent (Standard/Enterprise only)
+:: SQL Server Express has no SQL Server Agent (Standard/Enterprise only)
 :: This batch file + Windows Task Scheduler is the local substitute (see sql_agent_job_reference.sql)
 
 @echo off
