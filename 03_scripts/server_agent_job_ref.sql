@@ -1,6 +1,6 @@
 /*
 ===============================================================================
-Enable SQL Server Agent Job: Shop360Bike_Full_Pipeline (REFERENCE — NOT RUNNABLE)
+Enable SQL Server Agent Job: Shop360Bike_Full_Pipeline (REFERENCE - NOT RUNNABLE)
 ===============================================================================
 -- Standard/Enterprise only - fails on Express
 
