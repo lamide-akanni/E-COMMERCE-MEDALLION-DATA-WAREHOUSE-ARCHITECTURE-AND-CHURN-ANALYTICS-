@@ -113,7 +113,7 @@ BEGIN
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
 
-        -- Loading silver.crm_sales_details
+              -- Loading silver.crm_sales_details
         SET @start_time = GETDATE();
         PRINT '>> Truncating Table: silver.crm_sales_details';
         TRUNCATE TABLE silver.crm_sales_details;
@@ -129,21 +129,25 @@ BEGIN
             sls_quantity,
             sls_price
         )
+        -- NOTE: order/ship/due dates are shifted +12 years so the sales history
+        -- (source: 2010-2014) aligns with the inventory, FX and clickstream
+        -- sources (2026) and sits inside gold.dim_date (2015-2035).
+        -- Deliberate demonstration rebase, not a data quality fix.
         SELECT
             sls_ord_num,
             sls_prd_key,
             sls_cust_id,
             CASE
                 WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
-                ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
+                ELSE DATEADD(YEAR, 12, CAST(CAST(sls_order_dt AS VARCHAR) AS DATE))
             END AS sls_order_dt,
             CASE
                 WHEN sls_ship_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
-                ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
+                ELSE DATEADD(YEAR, 12, CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE))
             END AS sls_ship_dt,
             CASE
                 WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
-                ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
+                ELSE DATEADD(YEAR, 12, CAST(CAST(sls_due_dt AS VARCHAR) AS DATE))
             END AS sls_due_dt,
             CASE
                 WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price)
@@ -160,11 +164,6 @@ BEGIN
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
-
-        PRINT '--------------------------------------------------';
-        PRINT 'Loading ERP Tables';
-        PRINT '--------------------------------------------------';
-
         -- Loading silver.erp_cust_az12
         SET @start_time = GETDATE();
         PRINT '>> Truncating Table: silver.erp_cust_az12';
