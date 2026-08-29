@@ -170,3 +170,25 @@ FROM gold.fact_fx_rates fr
 JOIN gold.dim_currency bc ON fr.base_currency_key = bc.currency_key
 JOIN gold.dim_currency tc ON fr.target_currency_key = tc.currency_key;
 GO
+
+IF OBJECT_ID('gold.dim_security', 'V') IS NOT NULL
+    DROP VIEW gold.dim_security;
+GO
+CREATE VIEW gold.dim_security AS
+SELECT user_email, user_name, job_role, country
+FROM (
+    VALUES
+        ('john.smith@shop360bike.com',   'John Smith',   'Location Marketing Manager', 'United States'),
+        ('hans.muller@shop360bike.com',  'Hans Muller',  'Location Marketing Manager', 'Germany'),
+        ('marie.dupont@shop360bike.com', 'Marie Dupont', 'Location Marketing Manager', 'France'),
+        ('tom.hughes@shop360bike.com',   'Tom Hughes',   'Location Marketing Manager', 'United Kingdom'),
+        ('sarah.walker@shop360bike.com', 'Sarah Walker', 'Location Marketing Manager', 'Australia'),
+        ('luc.roy@shop360bike.com',      'Luc Roy',      'Location Marketing Manager', 'Canada'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'United States'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'United Kingdom'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'Germany'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'France'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'Australia'),
+        ('emma.clarke@shop360bike.com',  'Emma Clarke',  'Global Marketing Manager',   'Canada')
+) s(user_email, user_name, job_role, country);
+GO
