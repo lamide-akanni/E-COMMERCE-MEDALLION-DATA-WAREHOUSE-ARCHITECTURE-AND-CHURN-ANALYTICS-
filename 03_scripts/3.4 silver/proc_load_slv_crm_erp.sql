@@ -75,7 +75,7 @@ BEGIN
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
 
-        -- Loading silver.crm_prd_info
+               -- Loading silver.crm_prd_info
         SET @start_time = GETDATE();
         PRINT '>> Truncating Table: silver.crm_prd_info';
         TRUNCATE TABLE silver.crm_prd_info;
@@ -90,6 +90,9 @@ BEGIN
             prd_start_dt,
             prd_end_dt
         )
+        -- NOTE: product start/end dates shifted +12 years to match the same
+        -- rebase applied to sales dates. Keeps the product lifecycle aligned
+        -- with the transactions that reference it.
         SELECT
             prd_id,
             REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,
@@ -103,16 +106,15 @@ BEGIN
                 WHEN UPPER(TRIM(prd_line)) = 'T' THEN 'Touring'
                 ELSE 'n/a'
             END AS prd_line,
-            CAST(prd_start_dt AS DATE) AS prd_start_dt,
+            DATEADD(YEAR, 12, CAST(prd_start_dt AS DATE)) AS prd_start_dt,
             CAST(
-                LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1
+                LEAD(DATEADD(YEAR, 12, prd_start_dt)) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1
                 AS DATE
             ) AS prd_end_dt
         FROM bronze.crm_prd_info;
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
-
               -- Loading silver.crm_sales_details
         SET @start_time = GETDATE();
         PRINT '>> Truncating Table: silver.crm_sales_details';
