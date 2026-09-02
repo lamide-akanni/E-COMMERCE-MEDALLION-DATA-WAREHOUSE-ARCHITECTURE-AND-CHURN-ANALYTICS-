@@ -194,7 +194,7 @@ independent of source system identifiers.
 
 A star schema with four fact tables radiating from five conformed dimensions.
 
-![Data Model](01_docs/BI_data_model.png)
+![Data Model](01_docs/data_star_schemma.png)
 
 
 ### Role-playing dimensions
