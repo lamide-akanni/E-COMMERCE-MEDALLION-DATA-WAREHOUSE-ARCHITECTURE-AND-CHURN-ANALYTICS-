@@ -67,6 +67,11 @@ once as a physical table.
 ```
 
 ```
+
+---
+
+## Source systems
+
  *Source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
 
 
@@ -80,12 +85,8 @@ exchangerate-api    │      as-is     typed      business-ready       + RLS
 clickstream (Py)    ┘      tables    tables     views + dim_date
                                                                      Ad-hoc SQL
                            ▲                                          
-                           └── dbo.etl_log, dbo.run_full_pipeline     ML (planned)
+                           └── dbo.etl_log, dbo.run_full_pipeline     ML- Predictions
                                run_pipeline.bat, Slack alerting
----
-
-## Source systems
-
 
 ---
 
