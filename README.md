@@ -49,21 +49,10 @@ Every section below exists because one of those questions needed a working answe
 ---
 
 ## Architecture
+![Data Architecture](01_docs/data_architecture.png)
 
-```
-SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
-─────────                  ──────────────────────────                ───────────
+*Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
 
-CRM extracts (CSV)  ┐
-ERP extracts (CSV)  ├──►   BRONZE ──► SILVER ──► GOLD          ──►   Power BI
-BikeShopOLTP (DB)   │      raw       cleaned    star schema          semantic model
-exchangerate-api    │      as-is     typed      business-ready       + RLS
-clickstream (Py)    ┘      tables    tables     views + dim_date
-                                                                     Ad-hoc SQL
-                           ▲                                          
-                           └── dbo.etl_log, dbo.run_full_pipeline     ML (planned)
-                               run_pipeline.bat, Slack alerting
-```
 
 | Layer | Object type | Load pattern | Transformations |
 |---|---|---|---|
@@ -79,6 +68,21 @@ once as a physical table.
 ---
 
 ## Source systems
+
+```
+SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
+─────────                  ──────────────────────────                ───────────
+
+CRM extracts (CSV)  ┐
+ERP extracts (CSV)  ├──►   BRONZE ──► SILVER ──► GOLD          ──►   Power BI
+BikeShopOLTP (DB)   │      raw       cleaned    star schema          semantic model
+exchangerate-api    │      as-is     typed      business-ready       + RLS
+clickstream (Py)    ┘      tables    tables     views + dim_date
+                                                                     Ad-hoc SQL
+                           ▲                                          
+                           └── dbo.etl_log, dbo.run_full_pipeline     ML (planned)
+                               run_pipeline.bat, Slack alerting
+```
 
 Four sources, deliberately chosen to be structurally different from each other.
 
