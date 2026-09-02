@@ -6,7 +6,7 @@ Gold medallion architecture, models a star schema for analytics, and serves a go
 semantic layer with row-level security. Orchestration, logging, successful pipeline run or failure alerting are included
 and tested.
 
-**Stack:** Microsoft SQL Server (Express) · T-SQL · Python 3 · Bash · Power BI · DAX · Slack webhooks · Windows Task Scheduler
+**Stack:** Microsoft SQL Server (Express) · T-SQL · Python 3 · Bash · Power BI · DAX · Slack webhooks · Windows Task Scheduler 
 
 ---
 
