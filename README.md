@@ -51,8 +51,9 @@ Every section below exists because one of those questions needed a working answe
 ## Architecture
 ![Data Architecture](01_docs/data_architecture.png)
 
-*Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
+    *Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
 
+---
 
 | Layer | Object type | Load pattern | Transformations |
 |---|---|---|---|
@@ -64,10 +65,6 @@ Gold is views rather than materialised tables. Views cost query time but guarant
 layer can never drift from Silver, and they make lineage readable — the transformation is the
 object definition. `gold.dim_date` is the exception: it has no source system, so it is generated
 once as a physical table.
-
----
-
-## Source systems
 
 ```
 SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
@@ -84,6 +81,9 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                                run_pipeline.bat, Slack alerting
 ```
 
+---
+
+## Source systems
 Four sources, deliberately chosen to be structurally different from each other.
 
 ### 1. CRM — CSV extracts
