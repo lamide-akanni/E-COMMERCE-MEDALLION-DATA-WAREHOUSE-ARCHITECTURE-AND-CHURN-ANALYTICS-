@@ -8,8 +8,8 @@ GO
 
 -- ============================================================
 -- dbo.products
--- The OLTP system's own product catalogue, 
--- load direct from CRM extract.
+-- The OLTP system's own product catalogue
+-- loaded direct from the CRM extract. 
 -- BikeShopOLTP independent of the DataWarehouse 
 -- ============================================================
 IF OBJECT_ID('dbo.products', 'U') IS NOT NULL
@@ -58,9 +58,19 @@ SELECT
     ABS(CHECKSUM(NEWID())) % 200          AS stock_qty,
     25                                     AS reorder_level
 FROM (
-    SELECT DISTINCT SUBSTRING(prd_key, 7, LEN(prd_key)) AS product_number
-    FROM dbo.products
-    WHERE prd_end_dt IS NULL
+    -- Strip the category prefix (LEAD over start date), then 
+    -- keep only current products. 
+SELECT DISTINCT product_number
+    FROM (
+        SELECT
+            SUBSTRING(prd_key, 7, LEN(prd_key)) AS product_number,
+            LEAD(prd_start_dt) OVER (
+                PARTITION BY SUBSTRING(prd_key, 7, LEN(prd_key))
+                ORDER BY prd_start_dt
+            ) AS next_start
+        FROM dbo.products
+    ) x
+    WHERE next_start IS NULL
 ) p
 CROSS JOIN (
     VALUES ('London'),('Manchester'),('Edinburgh'),('Glasgow'),('Cardiff'),('Belfast')
@@ -70,4 +80,3 @@ CROSS JOIN (
     FROM (VALUES (0),(1),(2),(3),(4)) x(n)
 ) d;
 GO
- 
