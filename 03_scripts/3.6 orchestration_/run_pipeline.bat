@@ -32,7 +32,7 @@ if errorlevel 1 (
 
 echo.
 echo Step 3: Running SQL pipeline...
-sqlcmd -S localhost\SQLEXPRESS -d DataWarehouse -Q "EXEC dbo.run_full_pipeline;"
+sqlcmd -S localhost\SQLEXPRESS -d DataWarehouse -Q "EXEC dbo.run_full_pipeline;" -b
 if errorlevel 1 (
     echo FAILED at SQL Pipeline
     python send_slack_alert.py "FAILED at SQL Pipeline"
