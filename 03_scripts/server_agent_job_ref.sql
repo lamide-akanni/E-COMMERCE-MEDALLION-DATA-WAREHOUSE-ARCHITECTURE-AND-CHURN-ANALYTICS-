@@ -95,4 +95,4 @@ EXEC msdb.dbo.sp_update_job
 EXEC msdb.dbo.sp_add_jobserver
     @job_name = 'Shop360Bike_Full_Pipeline',
     @server_name = '(local)';
-    @notify_level_email = 2;  -- notify on failure (3 = always, 1 = success only)
+ 
