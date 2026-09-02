@@ -182,7 +182,7 @@ Nine views plus one generated table.
 | `gold.vw_fx_rates_readable` | View | Reporting convenience — FX with currency codes rather than keys |
 
 `dim_date` is built with a recursive CTE and `OPTION (MAXRECURSION 0)`. It carries both `date_key`
-(integer, for joining) and `full_date` (DATE, for DAX time intelligence) — the same table serving
+(integer, for joining) and `full_date` (DATE, for Power BI DAX time intelligence) — the same table serving
 two different consumers.
 
 Surrogate keys are generated with `ROW_NUMBER()` in the dimension views, keeping warehouse keys
