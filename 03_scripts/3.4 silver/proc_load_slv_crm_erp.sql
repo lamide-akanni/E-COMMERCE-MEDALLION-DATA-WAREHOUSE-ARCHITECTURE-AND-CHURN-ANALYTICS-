@@ -250,6 +250,7 @@ BEGIN
         PRINT 'Error Message: ' + ERROR_MESSAGE();
         PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR);
         PRINT '==================================================';
+ 		THROW;
     END CATCH
 END
 GO
