@@ -65,7 +65,12 @@ object definition. `gold.dim_date` is the exception: it has no source system, so
 once as a physical table.
 
 ```
-SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
+
+```
+ *Source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
+
+
+ SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
 ─────────                  ──────────────────────────                ───────────
 
 CRM extracts (CSV)  ┐
@@ -77,8 +82,6 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                            ▲                                          
                            └── dbo.etl_log, dbo.run_full_pipeline     ML (planned)
                                run_pipeline.bat, Slack alerting
-```
- *Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
 ---
 
 ## Source systems
