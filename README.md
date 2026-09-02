@@ -1,9 +1,9 @@
 # Shop 360 Bike - Medallion Data Warehouse & Analytics Platform
 
-An end-to-end data platform for a fictional UK bike retailer, built on Microsoft SQL Server.
+An end-to-end data platform for a UK bike retailer, built on Microsoft SQL Server.
 The project ingests from four heterogeneous source systems, transforms through a Bronze → Silver →
 Gold medallion architecture, models a star schema for analytics, and serves a governed Power BI
-semantic layer with row-level security. Orchestration, logging, successful loand failure alerting are included
+semantic layer with row-level security. Orchestration, logging, successful pipeline run or failure alerting are included
 and tested.
 
 **Stack:** Microsoft SQL Server (Express) · T-SQL · Python 3 · Bash · Power BI · DAX · Slack webhooks · Windows Task Scheduler
