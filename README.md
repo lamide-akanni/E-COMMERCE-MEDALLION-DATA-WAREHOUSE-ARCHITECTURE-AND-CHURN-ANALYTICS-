@@ -51,9 +51,7 @@ Every section below exists because one of those questions needed a working answe
 ## Architecture
 ![Data Architecture](01_docs/data_architecture.png)
 
-    *Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
-
----
+   
 
 | Layer | Object type | Load pattern | Transformations |
 |---|---|---|---|
@@ -80,11 +78,13 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                            └── dbo.etl_log, dbo.run_full_pipeline     ML (planned)
                                run_pipeline.bat, Slack alerting
 ```
-
+ *Medallion architecture: four source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
 ---
 
 ## Source systems
-Four sources, deliberately chosen to be structurally different from each other.
+
+
+---
 
 ### 1. CRM — CSV extracts
 `cust_info.csv`, `prd_info.csv`, `sales_details.csv`. Customer master, product catalogue with
