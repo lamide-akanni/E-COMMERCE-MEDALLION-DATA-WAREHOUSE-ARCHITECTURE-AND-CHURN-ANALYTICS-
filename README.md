@@ -73,7 +73,7 @@ once as a physical table.
 ## Source systems
 
  *Source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
-
+```
 
  SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
 ─────────                  ──────────────────────────                ───────────
@@ -88,6 +88,7 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                            └── dbo.etl_log, dbo.run_full_pipeline     ML- Predictions
                                run_pipeline.bat, Slack alerting
 
+```
 ---
 
 ### 1. CRM — CSV extracts
