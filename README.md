@@ -30,17 +30,21 @@ and tested.
 
 ## Why this project exists
 
-Most portfolio warehouse projects stop at one CSV source, one fact table, and a set of SELECT
-statements. This one was built to answer the harder questions an interviewer actually asks:
+## Why this project exists
 
-- What happens when your sources arrive in different formats, on different schedules, from
-  different systems?
+The scope goes beyond a single flat-file source, one fact table or a set of SELECT statements. 
+
+It was built to answer questions that only surface once a warehouse has to serve a real business:
+
+- What happens when the data you need sits in another unit's operational system rather than in a file someone sends you?
+- What happens when part of the picture only exists outside the organisation, behind a third-party API?
+- What happens when the business wants behavioural analytics, and the source is a continuous stream of events rather than a nightly batch?
 - How do you model a fact that references the same dimension twice?
-- How do you know your pipeline failed at 2am?
+- How do you know the pipeline failed at 2am?
 - How do you stop a regional manager from seeing another region's revenue?
 
-Every section below exists because one of those questions needed a real answer rather than a
-diagram.
+Every section below exists because one of those questions needed a working answer rather than a diagram.
+
 
 ---
 
