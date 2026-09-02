@@ -194,20 +194,8 @@ independent of source system identifiers.
 
 A star schema with four fact tables radiating from five conformed dimensions.
 
-```
-                          dim_date
-                             │
-          ┌──────────────────┼──────────────────┐
-          │                  │                  │
-    fact_inventory      fact_sales        fact_web_events
-          │              │      │                │
-          │              │      │                │
-    dim_products ────────┘      └──── dim_customers ──── dim_security
-                                                              (RLS)
-                       fact_fx_rates
-                             │
-                       dim_currency
-```
+![Data Model](01_docs/BI_data_model.png)
+
 
 ### Role-playing dimensions
 
