@@ -15,7 +15,7 @@ Script Purpose:
 
 Flow:
     Step 1 (CmdExec) -> fetch_fx_rates.py       (pull daily FX rates from API)
-    Step 2 (CmdExec) -> generate_web_event.py   (simulate clickstream events)
+    Step 2 (CmdExec) -> generate_web_events.py   (simulate clickstream events)
     Step 3 (T-SQL)   -> EXEC dbo.run_full_pipeline (bronze + silver loads)
     On completion    -> email/slack notification to Operator on failure
 
@@ -55,7 +55,7 @@ EXEC msdb.dbo.sp_add_jobstep
     @step_id = 2,
     @step_name = 'Generate Web Events',
     @subsystem = 'CmdExec',
-    @command = 'python "C:\Users\lamid\Documents\db\shop360bike\generate_web_event.py"',
+    @command = 'python "C:\Users\lamid\Documents\db\shop360bike\generate_web_events.py"',
     @on_success_action = 3,
     @on_fail_action = 2;
 
