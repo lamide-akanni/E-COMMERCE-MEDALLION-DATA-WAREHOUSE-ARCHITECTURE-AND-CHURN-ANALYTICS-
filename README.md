@@ -64,9 +64,9 @@ layer can never drift from Silver, and they make lineage readable — the transf
 object definition. `gold.dim_date` is the exception: it has no source system, so it is generated
 once as a physical table.
 
-```
+
 ![Data Flow](01_docs/data_flow.drawio.png)
-```
+
 
 ---
 
