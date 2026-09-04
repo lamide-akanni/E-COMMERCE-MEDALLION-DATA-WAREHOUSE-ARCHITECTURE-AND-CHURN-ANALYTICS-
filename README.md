@@ -75,7 +75,7 @@ once as a physical table.
 
 ![Data Intergration](01_docs/data_integration.drawio.png)
 
- 
+ ##
 ```
 
  SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
