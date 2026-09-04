@@ -65,14 +65,19 @@ object definition. `gold.dim_date` is the exception: it has no source system, so
 once as a physical table.
 
 ```
-
+![Data Flow](01_docs/data_flow.drawio.png)
 ```
 
 ---
 
-## Source systems
+## Source systems and Intergation 
 
  *Source systems landing in Bronze, cleansed in Silver, modelled as a star schema in Gold.*
+
+![Data Intergration](01_docs/data_integration.drawio.png)
+
+---
+ 
 ```
 
  SOURCES                    WAREHOUSE (SQL Server)                    CONSUMPTION
@@ -89,6 +94,7 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                                run_pipeline.bat, Slack alerting
 
 ```
+
 
 ### 1. CRM — CSV extracts
 `cust_info.csv`, `prd_info.csv`, `sales_details.csv`. Customer master, product catalogue with
