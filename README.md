@@ -92,7 +92,7 @@ clickstream (Py)    ┘      tables    tables     views + dim_date
                                run_pipeline.bat, Slack alerting
 
 ```
----
+##
 
 ### 1. CRM — CSV extracts
 `cust_info.csv`, `prd_info.csv`, `sales_details.csv`. Customer master, product catalogue with
